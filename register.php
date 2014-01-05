@@ -6,23 +6,23 @@ if (Input::exists()) {
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'username' => array(
-                'required' => TRUE,
-                'min' => 2,
-                'max' => 20,
-                'unique' => 'users'
+                'required'  => TRUE,
+                'min'       => 2,
+                'max'       => 20,
+                'unique'    => 'users'
             ),
-            'password' => array(
-                'required' => TRUE,
-                'min' => 6
+                'password'  => array(
+                'required'  => TRUE,
+                'min'       => 6
             ),
             'password_again' => array(
-                'required' => TRUE,
-                'matches' => 'password'
+                'required'   => TRUE,
+                'matches'    => 'password'
             ),
             'name' => array(
-                'required' => TRUE,
-                'min' => 2,
-                'max' => 50
+                'required'  => TRUE,
+                'min'       => 2,
+                'max'       => 50
             )
         ));
         if ($validate->passed()) {
@@ -32,12 +32,12 @@ if (Input::exists()) {
 
             try {
                 $user->create(array(
-                    'username' => Input::get('username'),
-                    'password' => Hash::make(Input::get('password'), $salt),
-                    'salt' => $salt,
-                    'name' => Input::get('name'),
-                    'joined' => date('Y-m-d H:i:s'),
-                    'group' => 1
+                    'username'  => Input::get('username'),
+                    'password'  => Hash::make(Input::get('password'), $salt),
+                    'salt'      => $salt,
+                    'name'      => Input::get('name'),
+                    'joined'    => date('Y-m-d H:i:s'),
+                    'group'     => 1
                 ));
                 
                 Session::flash('home', 'You have been registrated and can now log in!');

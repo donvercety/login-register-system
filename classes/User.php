@@ -26,9 +26,6 @@ class User {
                 if ($this->find($user)) {
                     $this->_isLoggedIn = TRUE;
                 }
-                else {
-                    //process logout
-                }
             }
         }
         else {
@@ -74,6 +71,7 @@ class User {
             $user = $this->find($username);
 
             if ($user) {
+                
                 if ($this->data()->password === Hash::make($password, $this->data()->salt)) {
                     Session::put($this->_sessionName, $this->data()->id);
 
@@ -96,6 +94,20 @@ class User {
 
                     return TRUE;
                 }
+            }
+        }
+        return FALSE;
+    }
+    
+    public function hasPermission($key) {
+        $group = $this->_db->get('groups', array('id', '=', $this->data()->group));
+
+        if ($group->count()) {
+            // if no TRUE supplied "json_decode" will return object
+            $permissions = json_decode($group->first()->permissions, TRUE);
+
+            if ($permissions[$key] == TRUE) {
+                return TRUE;
             }
         }
         return FALSE;

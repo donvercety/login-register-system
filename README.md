@@ -10,11 +10,11 @@ protection, secure password salting** and various helper classes to make working
 with sessions, cookies, input and configuration easier.
 
 Basic structure of the application:
+
+You will need a database that looks like this:
 ![alt tag](http://prikachi.com/images/683/6925683D.png)
 
-You will also need a database that looks like this:
-
-* A "group" table that looks like this:
+* A "groups" table that looks like this:
 *It is important to know that the "permissions" row is going to hold JSON Objects.*
 ![alt tag](http://prikachi.com/images/685/6925685I.png)
 

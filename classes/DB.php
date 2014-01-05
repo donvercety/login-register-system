@@ -39,7 +39,6 @@ class DB {
                     $x++;
                 }
             }
-
             if ($this->_quety->execute()) {
                 $this->_results = $this->_quety->fetchAll(PDO::FETCH_OBJ);
                 $this->_count = $this->_quety->rowCount();
@@ -92,7 +91,8 @@ class DB {
             $x++;
         }
 
-        $sql = "INSERT INTO $table (" . implode(', ', $keys) . ") VALUES ({$values})";
+        $sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
+        
         if (!$this->query($sql, $fields)->error()) {
             return TRUE;
         }

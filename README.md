@@ -13,7 +13,6 @@ Basic structure of the application:
 ![alt tag](http://prikachi.com/images/683/6925683D.png)
 
 You will also need a database that looks like this:
-![alt tag](http://prikachi.com/images/646/6925646N.png)
 
 * A "group" table that looks like this:
 *It is important to know that the "permissions" row is going to hold JSON Objects.*

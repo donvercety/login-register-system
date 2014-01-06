@@ -10,6 +10,7 @@ protection, secure password salting** and various helper classes to make working
 with sessions, cookies, input and configuration easier.
 
 Basic structure of the application:
+
 ![alt tag](http://prikachi.com/images/623/6925623v.png)
 
 You will need a database that looks like this:

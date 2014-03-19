@@ -12,7 +12,8 @@ class DB {
             $_quety,
             $_error = FALSE,
             $_results,
-            $_count = 0;
+            $_count = 0,
+			$_lastInsertId;
 
     private function __construct() {
         try {
@@ -40,8 +41,9 @@ class DB {
                 }
             }
             if ($this->_quety->execute()) {
-                $this->_results = $this->_quety->fetchAll(PDO::FETCH_OBJ);
-                $this->_count = $this->_quety->rowCount();
+				$this->_results = $this->_quety->fetchAll(PDO::FETCH_OBJ);
+				$this->_count = $this->_quety->rowCount();
+				$this->_lastInsertId = $this->_pdo->lastInsertId();
             }
             else {
                 $this->_error = TRUE;
@@ -134,6 +136,10 @@ class DB {
 
     public function count() {
         return $this->_count;
+    }
+	
+	public function getLastInsertId() {
+        return $this->_lastInsertId;
     }
 
 }

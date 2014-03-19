@@ -30,5 +30,12 @@ class Input {
         }
         return '';
     }
+	
+	public static function getAllPost() {
+		if (isset($_POST)) {
+            return $_POST;
+        } 
+        return '';	
+	}
 
 }

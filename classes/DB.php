@@ -18,6 +18,7 @@ class DB {
     private function __construct() {
         try {
             $this->_pdo = new PDO('mysql:host=' . Config::get('mysql/host') . ';dbname=' . Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
+			$this->_pdo->exec("SET CHARACTER SET utf8");
         } catch (PDOException $e) {
             die($e->getMessage());
         }

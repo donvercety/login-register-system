@@ -128,7 +128,7 @@ class DB {
     }
 
     public function first() {
-        return $this->_results[0];
+        return $this->results() ? $this->results()[0] : FALSE;
     }
 
     public function error() {
